@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.phone.dao.PhoneMapper">
+
+    <!--增加-->
+    <insert id="addPhone" parameterType="Phones">
+        insert into ssmbuild.phone(phoneName,phoneCounts,detail)
+        values (#{phoneName}, #{phoneCounts}, #{detail})
+    </insert>
+
+    <!--根据id删除-->
+    <delete id="deletePhoneById" parameterType="int">
+        delete from ssmbuild.phone where phoneID =#{phoneID}
+    </delete>
+
+    <!--更新-->
+    <update id="updatePhone" parameterType="Phones">
+        update ssmbuild.phone
+        set phoneName = #{phoneName},phoneCounts = #{phoneCounts},detail = #{detail}
+        where phoneID = #{phoneID}
+    </update>
+
+    <!--根据id查询,返回-->
+    <select id="queryPhoneById" resultType="Phones">
+        select * from ssmbuild.phone
+        where phoneID = #{phoneID}
+    </select>
+
+    <!--查询全部Phone-->
+    <select id="queryAllPhone" resultType="Phones">
+        SELECT * from ssmbuild.phone
+    </select>
+
+    <select id="queryPhoneByName" resultType="Phones">
+        select * from ssmbuild.phone where phoneName = #{phoneName}
+    </select>
+
+</mapper>
